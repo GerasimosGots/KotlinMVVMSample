@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawable_gradient"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!--Toolbar-->
+    <com.gerasimosGk.kotlinmvvmsample.presentation.views.CustomToolbar
+        android:id="@+id/toolbarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/user_details_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--Cover-->
+            <ImageView
+                android:id="@+id/coverImageView"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@color/colorAccentVeryLight" />
+
+            <!--User Name-->
+            <TextView
+                android:id="@+id/userNameTextView"
+                style="@style/Title.TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin16"
+                android:breakStrategy="balanced"
+                android:maxLines="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coverImageView"
+                tools:text="Name" />
+
+            <!--Phone Icon-->
+            <ImageView
+                android:id="@+id/phoneIconImageView"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin8"
+                android:src="@drawable/ic_cellphone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
+
+            <!--Phone Number-->
+            <TextView
+                android:id="@+id/phoneTextView"
+                style="@style/CommonText.TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin8"
+                android:layout_marginTop="@dimen/margin8"
+                app:layout_constraintStart_toEndOf="@+id/phoneIconImageView"
+                app:layout_constraintTop_toBottomOf="@+id/userNameTextView"
+                tools:text="65415641645" />
+
+            <!--Mail Icon-->
+            <ImageView
+                android:id="@+id/mailIconImageView"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin16"
+                android:src="@drawable/ic_mail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneIconImageView" />
+
+            <!--Mail-->
+            <TextView
+                android:id="@+id/emailTextView"
+                style="@style/SubTitle.TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin8"
+                android:layout_marginTop="@dimen/margin16"
+                app:layout_constraintStart_toEndOf="@+id/mailIconImageView"
+                app:layout_constraintTop_toBottomOf="@+id/phoneIconImageView"
+                tools:text="mail@mail.com" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--Cta Button-->
+    <Button
+        android:id="@+id/ctaButtonView"
+        style="@style/Button_CtaStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,11 @@ ext {
     // Libraries version
     def kotlin_version = "1.8.0"
     def mockitoVersion = "4.5.1"
+    def hiltVersion = "2.44"
+    def kotlinx_coroutines_version = '1.6.4'
+    def retrofit_version = '2.9.0'
+    def nav_version = "2.3.5"
+    def lifecycle_version = "2.5.1"
 
     core = [
             ktxCore : "androidx.core:core-ktx:$kotlin_version",
@@ -16,33 +21,37 @@ ext {
             fragment    : "androidx.fragment:fragment-ktx:1.4.1"
     ]
 
-    // Rx-Java 2 Dependencies
-    rx = [
-            rxandroid  : "io.reactivex.rxjava2:rxandroid:2.1.1",
-            rxjava     : "io.reactivex.rxjava2:rxjava:2.2.21",
-            extensions : "androidx.lifecycle:lifecycle-extensions:2.2.0",
-            rxkotlin   :   "io.reactivex.rxjava2:rxkotlin:2.4.0"
+    // Coroutines Dependencies
+    coroutines = [
+            core        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version",
+            android     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
     ]
 
-    def nav_version = "2.3.5"
     navigation = [
             navFragment : "androidx.navigation:navigation-fragment-ktx:$nav_version",
             navUi       : "androidx.navigation:navigation-ui-ktx:$nav_version"
     ]
 
+    // Lifecycle
+    lifecycle = [
+            extension           :   'androidx.lifecycle:lifecycle-extensions:2.2.0',
+            viewmodel_savestate : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version",
+            livedata            : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+            viewmodel           : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            runtime             : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+            common              : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    ]
+
     // Retrofit Dependencies
     retrofit = [
-            retrofit       : "com.squareup.retrofit2:retrofit:2.9.0",
-            adapterRx      : "com.squareup.retrofit2:adapter-rxjava:2.5.0",
-            gsonConvertert : "com.squareup.retrofit2:converter-gson:2.9.0",
-            adapterRx2     : "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0",
+            retrofit       : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            gsonConvertert : "com.squareup.retrofit2:converter-gson:$retrofit_version",
             interceptor    : "com.squareup.okhttp3:logging-interceptor:4.9.0"
     ]
 
     // Dagger Dependencies
-    dagger = [
-            dagger        : "com.google.dagger:dagger:2.28.3",
-            daggerAndroid : "com.google.dagger:dagger-android-support:2.20",
+    hilt = [
+            hilt : "com.google.dagger:hilt-android:$hiltVersion"
     ]
 
     thirdParties = [
@@ -59,10 +68,11 @@ ext {
     allImplementation = [
             coreLibs         : core.values(),
             uiLibs           : ui.values(),
-            rxLibs           : rx.values(),
+            lifecycleLibs    : lifecycle.values(),
+            coroutinesLibs   : coroutines.values(),
             navLibs          : navigation.values(),
             retrofitLibs     : retrofit.values(),
-            daggerLibs       : dagger.values(),
+            hiltLibs         : hilt.values(),
             thirdPartiesLibs : thirdParties.values()
     ]
 }

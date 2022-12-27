@@ -48,11 +48,11 @@ android {
 
 dependencies {
 
-    //Dagger
-    kapt 'com.google.dagger:dagger-android-processor:2.21'
-    kapt 'com.google.dagger:dagger-compiler:2.21'
+    def hiltVersion = "2.44"
+    // Hilt Kapt
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 
-    //Glide
+    // Glide Kapt
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     // Dependencies Implementation from Libs gradle file

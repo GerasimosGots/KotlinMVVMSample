@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/UserListFragment">
+
+    <fragment
+        android:id="@+id/UserListFragment"
+        android:name="com.gerasimosGk.kotlinmvvmsample.presentation.feature.explore.UserListFragment"
+        android:label="@string/user_list_title"
+        tools:layout="@layout/fragment_user_list">
+        <action
+            android:id="@+id/action_UserList_to_UserDetails"
+            app:destination="@id/UserDetailsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/UserDetailsFragment"
+        android:name="com.gerasimosGk.kotlinmvvmsample.presentation.feature.details.UserDetailsFragment"
+        android:label="@string/user_details_title"
+        tools:layout="@layout/fragment_user_details" />
+</navigation>

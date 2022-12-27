@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">KotlinMVVMSample</string>
+
+    <!--Error Dialog-->
+    <string name="error_communication_msg">There is a communication error. Please try again later.</string>
+    <string name="error_dialog_generic_title">System Message.</string>
+    <string name="OK">OK</string>
+
+    <!--User List-->
+    <string name="user_list_title">Users List</string>
+
+    <!--User Details-->
+    <string name="user_details_title">User Details</string>
+    <string name="cover_description">Cover Image</string>
+    <string name="cta_text">Meet %1$s</string>
+    <string name="toast_text">Meet The user hoho</string>
 </resources>

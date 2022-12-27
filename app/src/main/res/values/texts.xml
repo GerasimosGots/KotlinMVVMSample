@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Title.TextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">@dimen/text22</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_title_color</item>
+    </style>
+
+    <style name="SubTitle.TextStyle" parent="Title.TextStyle">
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_subtitle_color</item>
+    </style>
+
+    <style name="CommonText.TextStyle" parent="Title.TextStyle">
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_common_color</item>
+    </style>
+
+    <style name="Toolbar.TextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

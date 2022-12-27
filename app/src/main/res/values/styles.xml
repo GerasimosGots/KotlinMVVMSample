@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Image Cover Styles-->
+    <style name="CoverStyle">
+        <item name="android:cropToPadding">true</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_height">@dimen/cover_height</item>
+        <item name="android:contentDescription">@string/cover_description</item>
+    </style>
+
+    <!--CTA Button Style-->
+    <style name="Button_CtaStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/cta_dimen_height</item>
+        <item name="android:layout_marginStart">@dimen/margin16</item>
+        <item name="android:layout_marginEnd">@dimen/margin16</item>
+        <item name="android:layout_marginBottom">@dimen/margin16</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+        <item name="android:background">@drawable/drawable_rounded_rect</item>
+        <item name="android:foreground">?selectableItemBackgroundBorderless</item>
+        <item name="android:outlineProvider">background</item>
+        <item name="android:textColor">@color/text_title_color</item>
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CardClickCustomHighlight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorControlHighlight">@color/colorAccentVeryLight</item>
+    </style>
+</resources>
