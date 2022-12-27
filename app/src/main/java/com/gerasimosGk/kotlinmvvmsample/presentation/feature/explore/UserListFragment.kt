@@ -2,7 +2,11 @@ package com.gerasimosGk.kotlinmvvmsample.presentation.feature.explore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gerasimosGk.kotlinmvvmsample.R
+import com.gerasimosGk.kotlinmvvmsample.data.Resource
+import com.gerasimosGk.kotlinmvvmsample.data.collect
 import com.gerasimosGk.kotlinmvvmsample.databinding.FragmentUserListBinding
 import com.gerasimosGk.kotlinmvvmsample.domain.UserUseCase
 import com.gerasimosGk.kotlinmvvmsample.presentation.base.BaseFragment
@@ -34,14 +38,24 @@ class UserListFragment : BaseFragment<UserListFragmentVM, FragmentUserListBindin
 
 
     override fun initView() {
-        //TODO
-        //presenter?.requestData()
+        viewModel.requestData()
         // View related initializations
         initAdapter()
     }
 
     override fun setObservers() {
-        TODO("Not yet implemented")
+        viewModel.userListState.observe(viewLifecycleOwner) { result ->
+            sharedViewModel.updateLoadingState(result is Resource.Loading)
+            result.collect(
+                onSuccess = { list ->
+                    list?.let {
+                        userListAdapter.set(it)
+                    }
+                },
+                onError = {
+                    sharedViewModel.emitError(it)
+                })
+        }
     }
 
     private fun initAdapter() {
@@ -53,6 +67,9 @@ class UserListFragment : BaseFragment<UserListFragmentVM, FragmentUserListBindin
     }
 
     override fun onCardListClicked(id: String) {
-        TODO("Not yet implemented")
+        viewModel.onUserSelected(id = id)
+
+        // Navigate to next
+        navController.navigate(R.id.action_UserList_to_UserDetails)
     }
 }
