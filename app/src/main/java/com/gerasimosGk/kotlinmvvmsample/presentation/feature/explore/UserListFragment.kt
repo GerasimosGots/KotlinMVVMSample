@@ -4,15 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gerasimosGk.kotlinmvvmsample.databinding.FragmentUserListBinding
+import com.gerasimosGk.kotlinmvvmsample.domain.UserUseCase
 import com.gerasimosGk.kotlinmvvmsample.presentation.base.BaseFragment
 import com.gerasimosGk.kotlinmvvmsample.presentation.base.viewModelBuilder
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class UserListFragment : BaseFragment<UserListFragmentVM, FragmentUserListBinding>(),
     UserListAdapter.AdapterListener {
 
+    @Inject
+    lateinit var userUseCase: UserUseCase
+
     override val viewModel by viewModelBuilder {
-        UserListFragmentVM()
+        UserListFragmentVM(userUseCase = userUseCase)
     }
 
     override fun getFragmentBinding(

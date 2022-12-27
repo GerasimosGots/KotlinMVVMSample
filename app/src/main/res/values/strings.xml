@@ -3,8 +3,14 @@
 
     <!--Error Dialog-->
     <string name="error_communication_msg">There is a communication error. Please try again later.</string>
+    <string name="error_network_msg">There is a communication error. Please try again later.</string>
+    <string name="error_api_error_msg">There is a communication error. Please try again later.</string>
     <string name="error_dialog_generic_title">System Message.</string>
     <string name="OK">OK</string>
+
+    <!--Error-->
+    <string name="generic_error_message">Something went wrong please try again</string>
+    <string name="error_eml_msg">An error occurred while opening the file. Try again.</string>
 
     <!--User List-->
     <string name="user_list_title">Users List</string>

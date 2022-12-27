@@ -10,7 +10,9 @@ import com.gerasimosGk.kotlinmvvmsample.presentation.base.BaseActivity
 import com.gerasimosGk.kotlinmvvmsample.presentation.base.activityViewModelBuilder
 import com.gerasimosGk.kotlinmvvmsample.presentation.showAlertDialog
 import com.gerasimosGk.kotlinmvvmsample.presentation.visible
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserActivity : BaseActivity<ActivityUserBinding>() {
 
     private val sharedViewModel: UserSharedVM by activityViewModelBuilder {

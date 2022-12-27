@@ -1,6 +1,8 @@
 package com.gerasimosGk.kotlinmvvmsample.data
 
+import androidx.annotation.StringRes
+
 data class ErrorDataModel(
     var errorType: ErrorType,
-    var errorMessage: String? = null
+    @StringRes var errorMessage: Int? = null
 )
