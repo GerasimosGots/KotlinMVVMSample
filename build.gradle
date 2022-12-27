@@ -1,0 +1,31 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+
+    // Common Library dependencies path
+    ext.LibsPath = '../buildSystem/libs.gradle'
+
+    // Common Plugins for Modules path
+    ext.PluginsPath = '../buildSystem/plugins.gradle'
+
+    // Gradle file responsible for apk versioning
+    ext.Versioning = '../buildSystem/versioning.gradle'
+
+    // This block encapsulates Base Versions and makes them available to all
+    // modules in the project.
+    ext {
+        BUILD_TOOLS_VERSION = '33.0.0'
+        BUILD_COMPILE_SDK_VERSION = 31
+        BUILD_TARGET_SDK_VERSION = 31
+        BUILD_MIN_SDK_VERSION = 23
+
+        // Version code & Version Name initial values
+        // After the apk generation the versioning.gradle file runs and changes the values
+        VERSION_CODE = 1
+        VERSION_NAME = 1
+    }
+}
+plugins {
+    id 'com.android.application' version '7.3.1' apply false
+    id 'com.android.library' version '7.3.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+}

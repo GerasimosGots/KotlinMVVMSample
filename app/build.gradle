@@ -1,0 +1,63 @@
+apply from: LibsPath
+apply from: PluginsPath
+apply from: Versioning
+
+android {
+    namespace 'com.gerasimosGk.kotlinmvvmsample'
+    compileSdk rootProject.ext.BUILD_COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "com.gerasimosGk.kotlinmvvmsample"
+        minSdk rootProject.ext.BUILD_MIN_SDK_VERSION
+        targetSdk rootProject.ext.BUILD_TARGET_SDK_VERSION
+        versionCode rootProject.ext.VERSION_CODE
+        versionName rootProject.ext.VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Apk naming
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (outputFileName != null && outputFileName.endsWith(".apk")) {
+                outputFileName = outputFileName.replace('.apk', "-${versionName}-${versionCode}.apk")
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    // To enable View Binding feature
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    //Dagger
+    kapt 'com.google.dagger:dagger-android-processor:2.21'
+    kapt 'com.google.dagger:dagger-compiler:2.21'
+
+    //Glide
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // Dependencies Implementation from Libs gradle file
+    implementation allImplementation.values()
+
+    // Unit testing related dependencies
+    testImplementation unitTesting.values()
+}
