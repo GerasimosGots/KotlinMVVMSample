@@ -10,8 +10,7 @@ ext {
     def lifecycle_version = "2.5.1"
 
     core = [
-            ktxCore : "androidx.core:core-ktx:$kotlin_version",
-            legacy  : "androidx.legacy:legacy-support-v4:1.0.0"
+            ktxCore : "androidx.core:core-ktx:$kotlin_version"
     ]
 
     ui = [
@@ -68,7 +67,8 @@ ext {
     unitTesting = [
             jUnit           :  "junit:junit:4.13.2",
             mockitoCore     :  "org.mockito:mockito-core:$mockitoVersion",
-            mockitoInline   :  "org.mockito:mockito-inline:$mockitoVersion"
+            mockitoInline   :  "org.mockito:mockito-inline:$mockitoVersion",
+            coroutinesTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
     ]
 
     allImplementation = [
