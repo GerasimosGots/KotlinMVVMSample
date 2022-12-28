@@ -3,27 +3,37 @@ package com.gerasimosGk.kotlinmvvmsample.presentation
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.graphics.Color
+import com.gerasimosGk.kotlinmvvmsample.R
 
 fun Activity?.showAlertDialog(
     title: String? = null,
     message: String?,
     positiveButtonText: String?,
-    negativeButtonText: String? = null,
-    onPositiveClickListener: DialogInterface.OnClickListener?,
-    onNegativeClickListener: DialogInterface.OnClickListener? = null,
+    onPositiveClickListener: DialogInterface.OnClickListener?
 ) {
     val activity = this
-    AlertDialog.Builder(activity).apply {
+    if (this == null) {
+        return
+    }
+
+    val builder = AlertDialog.Builder(this)
+    with(builder) {
         setTitle(title)
         setMessage(message)
-        setCancelable(false)
+        setCancelable(true)
         setPositiveButton(positiveButtonText, onPositiveClickListener)
 
-        negativeButtonText?.let {
-            setNegativeButton(negativeButtonText, onNegativeClickListener)
-        }
+        this.create()
+    }.run {
 
-        if (activity != null && !activity.isFinishing)
+        //TODO
+        /*getButton(DialogInterface.BUTTON_POSITIVE).apply {
+            setTextColor(Color.MAGENTA)
+        }*/
+
+        if (activity != null && !activity.isFinishing){
             show()
+        }
     }
 }

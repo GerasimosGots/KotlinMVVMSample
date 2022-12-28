@@ -1,4 +1,4 @@
-package com.gerasimosGk.kotlinmvvmsample.presentation.feature.explore
+package com.gerasimosGk.kotlinmvvmsample.presentation.feature.itemExplore
 
 /**
  * Created by Gerasimos on 6/12/2021

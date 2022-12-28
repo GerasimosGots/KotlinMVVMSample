@@ -1,6 +1,6 @@
 package com.gerasimosGk.kotlinmvvmsample.domain
 
-import com.gerasimosGk.kotlinmvvmsample.data.DataResource
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.DataResource
 
 interface UserUseCase {
     suspend fun getUserList(): DataResource<MutableList<UserModel>>

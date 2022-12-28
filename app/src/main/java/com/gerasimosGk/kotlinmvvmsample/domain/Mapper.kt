@@ -1,8 +1,8 @@
 package com.gerasimosGk.kotlinmvvmsample.domain
 
-import com.gerasimosGk.kotlinmvvmsample.data.ApiUserModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.UserModelResponse
 
-fun ApiUserModel.toUserModel(photoUrl: String = ""): UserModel {
+fun UserModelResponse.toUserModel(photoUrl: String = ""): UserModel {
     return UserModel(
         id = this.id,
         email = this.email,

@@ -1,11 +1,12 @@
 package com.gerasimosGk.kotlinmvvmsample.data.repositoty
 
-import com.gerasimosGk.kotlinmvvmsample.data.ApiUserModel
-import com.gerasimosGk.kotlinmvvmsample.data.DataResource
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.UserModelResponse
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.DataResource
 import com.gerasimosGk.kotlinmvvmsample.data.network.ApiClient
 import com.gerasimosGk.kotlinmvvmsample.data.network.performApiCall
 import com.gerasimosGk.kotlinmvvmsample.data.network.service.UserService
 import kotlinx.coroutines.CoroutineDispatcher
+import retrofit2.Response
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -13,8 +14,8 @@ class UserRepositoryImpl @Inject constructor(
     private val userService: UserService
 ) : UserRepository {
 
-    override suspend fun getUserList(): DataResource<MutableList<ApiUserModel>> {
-        return performApiCall(dispatcher = dispatcher){
+    override suspend fun getUserList(): DataResource<Response<MutableList<UserModelResponse>>> {
+        return performApiCall(dispatcher = dispatcher) {
             userService.getUsers()
         }
     }

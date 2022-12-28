@@ -26,6 +26,8 @@ abstract class BaseFragment<VM : ViewModel, B : ViewBinding> : Fragment() {
 
     protected abstract fun setObservers()
 
+    abstract fun setToolbar()
+
     // Nav controller, lazy init, Usage for all fragment children, for the navigation
     protected val navController by lazy { findNavController() }
 
@@ -42,6 +44,7 @@ abstract class BaseFragment<VM : ViewModel, B : ViewBinding> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         setObservers()
+        setToolbar()
     }
 
     // Fragments outlive their views. We clean up any references to the binding class instance.

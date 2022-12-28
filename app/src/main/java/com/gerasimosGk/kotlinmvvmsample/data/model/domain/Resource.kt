@@ -1,8 +1,22 @@
-package com.gerasimosGk.kotlinmvvmsample.data
+package com.gerasimosGk.kotlinmvvmsample.data.model.domain
 
+import com.gerasimosGk.kotlinmvvmsample.data.model.error.ErrorDataModel
+
+
+/**
+ * Sealed wrapper class representing the simple states of a screen, that is
+ *  1. Success
+ *  2. Error
+ *  3. Loading
+ *
+ *  This class can contain a value object [T].
+ *  The ViewModel is responsible to map an object in Resource class.
+ *  The View (e.g Fragment) is responsible to observe through livedata and collect this Resource object
+ *  and act accordingly.
+ */
 sealed class Resource<out T> {
     data class Success<out T>(
-        val value: T? = null,
+        val value: T,
     ) : Resource<T>()
 
     data class Loading<T>(
@@ -18,7 +32,7 @@ sealed class Resource<out T> {
 
         fun <T> error(errorData: ErrorDataModel): Resource<T> = Error(errorData)
 
-        fun <T> success(data: T? = null): Resource<T> = Success(data)
+        fun <T> success(data: T): Resource<T> = Success(data)
     }
 }
 

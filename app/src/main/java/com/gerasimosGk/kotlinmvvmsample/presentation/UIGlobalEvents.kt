@@ -1,13 +1,13 @@
 package com.gerasimosGk.kotlinmvvmsample.presentation
 
-import com.gerasimosGk.kotlinmvvmsample.data.ErrorDataModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.error.ErrorDataModel
 
-sealed class GlobalEvents {
+sealed class UIGlobalEvents {
     data class OnShowProgressBar(
         val isVisible: Boolean
-    ) : GlobalEvents()
+    ) : UIGlobalEvents()
 
     data class OnShowErrorMessage(
         val error: ErrorDataModel
-    ) : GlobalEvents()
+    ) : UIGlobalEvents()
 }

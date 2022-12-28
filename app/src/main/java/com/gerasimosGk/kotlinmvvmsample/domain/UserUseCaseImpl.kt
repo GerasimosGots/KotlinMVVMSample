@@ -1,10 +1,12 @@
 package com.gerasimosGk.kotlinmvvmsample.domain
 
 import com.gerasimosGk.kotlinmvvmsample.R
-import com.gerasimosGk.kotlinmvvmsample.data.DataResource
-import com.gerasimosGk.kotlinmvvmsample.data.ErrorDataModel
-import com.gerasimosGk.kotlinmvvmsample.data.ErrorType
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.DataResource
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.UserModelResponse
+import com.gerasimosGk.kotlinmvvmsample.data.model.error.ErrorDataModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.error.ErrorType
 import com.gerasimosGk.kotlinmvvmsample.data.repositoty.UserRepository
+import retrofit2.Response
 import javax.inject.Inject
 
 class UserUseCaseImpl @Inject constructor(private val userRepository: UserRepository) :
@@ -20,12 +22,21 @@ class UserUseCaseImpl @Inject constructor(private val userRepository: UserReposi
 
          when (result) {
             is DataResource.Success -> {
-                val userList = result.value
-                val mappedList =  userList?.map { apiUserModel ->
+                val userList = result.value.body()
+
+                if (userList == null) {
+                    val errorDataModel = ErrorDataModel(
+                        errorType = ErrorType.CustomError,
+                        errorMessage = R.string.generic_error_message
+                    )
+                    return DataResource.Error(errorDataModel)
+                }
+
+                val mappedList =  userList.map { apiUserModel ->
                             val photoUrl = userRepository.getPhotoById(apiUserModel.id)
                             val userModel = apiUserModel.toUserModel(photoUrl = photoUrl)
                            userModel
-                        }?.toMutableList().also {
+                        }.toMutableList().also {
                             addToCache(it)
                             DataResource.success(it)
                         }

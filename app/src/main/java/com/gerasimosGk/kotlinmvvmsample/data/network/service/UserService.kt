@@ -1,6 +1,8 @@
 package com.gerasimosGk.kotlinmvvmsample.data.network.service
 
-import com.gerasimosGk.kotlinmvvmsample.data.ApiUserModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.UserModelResponse
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.DataResource
+import retrofit2.Response
 import retrofit2.http.GET
 
 /**
@@ -8,5 +10,5 @@ import retrofit2.http.GET
  */
 interface UserService {
     @GET("/users")
-    suspend fun getUsers(): MutableList<ApiUserModel>
+    suspend fun getUsers(): Response<MutableList<UserModelResponse>>
 }

@@ -1,5 +1,6 @@
 package com.gerasimosGk.kotlinmvvmsample.data.network
 
+import com.gerasimosGk.kotlinmvvmsample.BuildConfig
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

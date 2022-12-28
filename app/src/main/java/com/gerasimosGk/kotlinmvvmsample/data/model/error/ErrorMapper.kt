@@ -1,6 +1,7 @@
-package com.gerasimosGk.kotlinmvvmsample.data
+package com.gerasimosGk.kotlinmvvmsample.data.model.error
 
 import com.gerasimosGk.kotlinmvvmsample.R
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.DataResource
 import retrofit2.HttpException
 import timber.log.Timber
 
@@ -20,13 +21,12 @@ internal fun <T> Throwable.toErrorDataResource(): DataResource.Error<T> {
 internal fun Throwable.mapToErrorType(): ErrorType {
     return when (this) {
         is HttpException -> ErrorType.ApiErrorResponse
-
         else -> ErrorType.CustomError
     }
 }
 
 //From ErrorType to ErrorDataModel
-internal fun Throwable?.buildErrorDataModelByType(errorType: ErrorType): ErrorDataModel {
+internal fun Throwable.buildErrorDataModelByType(errorType: ErrorType): ErrorDataModel {
     return when (errorType) {
         ErrorType.ApiErrorResponse -> {
             ErrorDataModel(

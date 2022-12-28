@@ -1,4 +1,4 @@
-package com.gerasimosGk.kotlinmvvmsample.data
+package com.gerasimosGk.kotlinmvvmsample.data.model.error
 
 enum class ErrorType {
     ApiErrorResponse,

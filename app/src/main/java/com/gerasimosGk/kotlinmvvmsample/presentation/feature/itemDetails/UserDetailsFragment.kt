@@ -1,11 +1,12 @@
-package com.gerasimosGk.kotlinmvvmsample.presentation.feature.details
+package com.gerasimosGk.kotlinmvvmsample.presentation.feature.itemDetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import com.gerasimosGk.kotlinmvvmsample.R
-import com.gerasimosGk.kotlinmvvmsample.data.Resource
-import com.gerasimosGk.kotlinmvvmsample.data.collect
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.CustomToolbarModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.Resource
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.collect
 import com.gerasimosGk.kotlinmvvmsample.databinding.FragmentUserDetailsBinding
 import com.gerasimosGk.kotlinmvvmsample.domain.UserModel
 import com.gerasimosGk.kotlinmvvmsample.domain.UserUseCase
@@ -72,5 +73,10 @@ class UserDetailsFragment : BaseFragment<UserDetailsFragmentVM, FragmentUserDeta
             phoneTextView.text = userModel.phone
             ctaButtonView.text = String.format(getString(R.string.cta_text), userModel.userName)
         }
+    }
+
+    override fun setToolbar() {
+        val model = CustomToolbarModel(title = R.string.user_details_title, enableBackButton = true)
+        binding?.toolbarView?.setView(model)
     }
 }

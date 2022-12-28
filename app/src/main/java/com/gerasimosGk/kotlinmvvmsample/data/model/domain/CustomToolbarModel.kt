@@ -1,4 +1,4 @@
-package com.gerasimosGk.kotlinmvvmsample.data
+package com.gerasimosGk.kotlinmvvmsample.data.model.domain
 
 import androidx.annotation.StringRes
 

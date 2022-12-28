@@ -1,4 +1,4 @@
-package com.gerasimosGk.kotlinmvvmsample.presentation.feature.explore
+package com.gerasimosGk.kotlinmvvmsample.presentation.feature.itemExplore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

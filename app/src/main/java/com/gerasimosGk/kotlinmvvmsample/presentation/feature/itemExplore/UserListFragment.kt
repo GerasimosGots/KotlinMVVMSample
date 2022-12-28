@@ -1,12 +1,12 @@
-package com.gerasimosGk.kotlinmvvmsample.presentation.feature.explore
+package com.gerasimosGk.kotlinmvvmsample.presentation.feature.itemExplore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gerasimosGk.kotlinmvvmsample.R
-import com.gerasimosGk.kotlinmvvmsample.data.Resource
-import com.gerasimosGk.kotlinmvvmsample.data.collect
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.CustomToolbarModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.Resource
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.collect
 import com.gerasimosGk.kotlinmvvmsample.databinding.FragmentUserListBinding
 import com.gerasimosGk.kotlinmvvmsample.domain.UserUseCase
 import com.gerasimosGk.kotlinmvvmsample.presentation.base.BaseFragment
@@ -39,6 +39,7 @@ class UserListFragment : BaseFragment<UserListFragmentVM, FragmentUserListBindin
 
     override fun initView() {
         viewModel.requestData()
+
         // View related initializations
         initAdapter()
     }
@@ -58,18 +59,23 @@ class UserListFragment : BaseFragment<UserListFragmentVM, FragmentUserListBindin
         }
     }
 
+    override fun onCardListClicked(id: String) {
+        viewModel.onUserSelected(id = id)
+
+        // Navigate to next
+        navController.navigate(R.id.action_UserList_to_UserDetails)
+    }
+
+    override fun setToolbar() {
+        val model = CustomToolbarModel(R.string.user_list_title, false)
+        binding?.toolbarView?.setView(model)
+    }
+
     private fun initAdapter() {
         binding?.userRecyclerView?.also {
             it.adapter = userListAdapter
             it.layoutManager = LinearLayoutManager(it.context, LinearLayoutManager.VERTICAL, false)
         }
         userListAdapter.setListener(WeakReference(this))
-    }
-
-    override fun onCardListClicked(id: String) {
-        viewModel.onUserSelected(id = id)
-
-        // Navigate to next
-        navController.navigate(R.id.action_UserList_to_UserDetails)
     }
 }

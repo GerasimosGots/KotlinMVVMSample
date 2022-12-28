@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.gerasimosGk.kotlinmvvmsample.R
-import com.gerasimosGk.kotlinmvvmsample.data.CustomToolbarModel
+import com.gerasimosGk.kotlinmvvmsample.data.model.domain.CustomToolbarModel
 import com.gerasimosGk.kotlinmvvmsample.databinding.LayoutCustomToolbarBinding
 import com.gerasimosGk.kotlinmvvmsample.presentation.visible
 import java.lang.ref.WeakReference

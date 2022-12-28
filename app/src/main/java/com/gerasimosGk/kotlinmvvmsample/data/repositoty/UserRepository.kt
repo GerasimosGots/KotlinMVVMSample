@@ -1,10 +1,11 @@
 package com.gerasimosGk.kotlinmvvmsample.data.repositoty
 
-import com.gerasimosGk.kotlinmvvmsample.data.ApiUserModel
-import com.gerasimosGk.kotlinmvvmsample.data.DataResource
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.UserModelResponse
+import com.gerasimosGk.kotlinmvvmsample.data.model.api.DataResource
+import retrofit2.Response
 
 interface UserRepository {
-    suspend fun getUserList(): DataResource<MutableList<ApiUserModel>>
+    suspend fun getUserList(): DataResource<Response<MutableList<UserModelResponse>>>
 
     fun getPhotoById(id: String): String
 }
